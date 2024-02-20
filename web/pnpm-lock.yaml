@@ -8,6 +8,9 @@ dependencies:
   '@algolia/autocomplete-core':
     specifier: ^1.13.0
     version: 1.17.0(@algolia/client-search@4.22.1)(algoliasearch@4.22.1)(search-insights@2.13.0)
+  '@asteasolutions/zod-to-openapi':
+    specifier: ^6.3.1
+    version: 6.3.1(zod@3.22.4)
   '@aws-sdk/client-s3':
     specifier: ^3.472.0
     version: 3.515.0
@@ -280,6 +283,12 @@ devDependencies:
   '@biomejs/biome':
     specifier: 1.5.2
     version: 1.5.2
+  '@types/mdx':
+    specifier: ^2.0.11
+    version: 2.0.11
+  '@types/ms':
+    specifier: ^0.7.34
+    version: 0.7.34
   '@types/node':
     specifier: ^20
     version: 20.11.19
@@ -464,6 +473,15 @@ packages:
 
   /@asteasolutions/zod-to-openapi@5.5.0(zod@3.22.4):
     resolution: {integrity: sha512-d5HwrvM6dOKr3XdeF+DmashGvfEc+1oiEfbscugsiwSTrFtuMa7ETpW9sTNnVgn+hJaz+PRxPQUYD7q9/5dUig==}
+    peerDependencies:
+      zod: ^3.20.2
+    dependencies:
+      openapi3-ts: 4.2.1
+      zod: 3.22.4
+    dev: false
+
+  /@asteasolutions/zod-to-openapi@6.3.1(zod@3.22.4):
+    resolution: {integrity: sha512-1CRWBqslgdBpZeJnxxksGirAQ39Iztxk+LzTkYwoP0mNzuaULa604s8Xc5V9yzmYccwJ89O9fPQgxCkbNN398g==}
     peerDependencies:
       zod: ^3.20.2
     dependencies:
@@ -4714,7 +4732,6 @@ packages:
 
   /@types/mdx@2.0.11:
     resolution: {integrity: sha512-HM5bwOaIQJIQbAYfax35HCKxx7a3KrK3nBtIqJgSOitivTD1y3oW9P3rxY9RkXYPUk7y/AjAohfHKmFpGE79zw==}
-    dev: false
 
   /@types/mime@1.3.5:
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
@@ -4726,7 +4743,6 @@ packages:
 
   /@types/ms@0.7.34:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
-    dev: false
 
   /@types/node-fetch@2.6.2:
     resolution: {integrity: sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==}
