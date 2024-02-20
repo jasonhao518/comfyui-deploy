@@ -20,7 +20,7 @@ import {
 } from "@clerk/nextjs";
 import { useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/layout/LocaleSwitcher";
-
+import { useRouter } from "next/navigation";
 
 interface NavBarProps {
   items?: MainNavItem[]
@@ -34,6 +34,7 @@ export function NavBar({ locale, items, children, rightElements, scroll = false 
   const scrolled = useScroll(50);
   const signInModal = useSigninModal();
   const t = useTranslations()
+  const router = useRouter()
   return (
     <header
       className={`sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all ${scroll ? scrolled
@@ -48,7 +49,7 @@ export function NavBar({ locale, items, children, rightElements, scroll = false 
           {rightElements}
           <LocaleSwitcher />
           <SignedIn>
-            <Button href="/dashboard" >{t("dashboard")}</Button>
+            <Button onClick={() => router.push("/dashboard")} >{t("dashboard")}</Button>
           </SignedIn>
           <SignedOut>
             {/* Signed out users get sign in button */}

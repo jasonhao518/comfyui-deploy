@@ -106,6 +106,7 @@
     "react-highlight-words": "^0.20.0",
     "react-hook-form": "^7.48.2",
     "react-use-websocket": "^4.5.0",
+    "recharts": "^2.12.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "remark-mdx": "^3.0.0",

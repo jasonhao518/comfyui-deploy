@@ -11,6 +11,7 @@ import { getMessages } from "next-intl/server"
 interface DashboardLayoutProps {
   children?: React.ReactNode,
   params: { locale: string };
+  modal: any;
 }
 
 export default async function DashboardLayout({

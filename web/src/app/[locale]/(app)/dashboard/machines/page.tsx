@@ -1,4 +1,4 @@
-import { AccessType } from "../../../../lib/AccessType";
+import { AccessType } from "../../../../../lib/AccessType";
 import { MachineList } from "@/components/MachineList";
 import { db } from "@/db/db";
 import { machinesTable } from "@/db/schema";
