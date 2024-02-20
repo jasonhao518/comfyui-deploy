@@ -1,5 +1,145 @@
 {
-    "Index": {
-        "title": "Hello world2!"
+    "getStarted": "Get Started",
+    "pricing": "Pricing",
+    "billing": "Billing",
+    "settings": "Settings",
+    "save": "Save",
+    "saving": "Saving",
+    "name": "Your Name",
+    "name1": "Name",
+    "usage": "Usage",
+    "yearly": "yearly",
+    "monthly": "monthly",
+    "signOut": "Sign Out",
+    "menu": "Menu",
+    "dashboard": "Dashboard",
+    "usageDesc": "Monitoring your credit usage",
+    "nameDesc": "Please enter your full name or a display name you are comfortable with.",
+    "settingsDesc": "Manage account and website settings.",
+    "subscription": "Subscription Plan",
+    "planBefore": "You are currently on the",
+    "planAfter": "plan",
+    "planRenew": "Your plan renews on ",
+    "managePlan": "Manage Subscription",
+    "upgradePlan": "Upgrade now",
+    "planCancel": "Your plan will be canceled on ",
+    "billingDesc": "Manage billing and your subscription plan.",
+    "exploreBeta": "Explore new features in Beta",
+    "pricingSlogan": "Choose what best meets your requirements!",
+    "pricingReference": "For AI model pricing, please reference",
+    "goDashboard": "Go to dashboard",
+    "continueWith": "Or continue with",
+    "monthlyBill": "Monthly Billing",
+    "annualBill": "Annual Billing",
+    "month": "mo",
+    "back": "Back",
+    "goPricing": "Go Pricing",
+    "chargeAnnual": "will be charged when annual",
+    "chargeMonthly": "when charged monthly",
+    "createAccount": "Create an account",
+    "enterEmailSignup": "Enter your email below to create your account",
+    "emailSignup": "Sign Up with Email",
+    "emailSignin": "Sign In with Email",
+    "welcomeBack": "Welcome back",
+    "enterEEmail": "Enter your email to sign in to your account",
+    "toSignup": "Don't have an account? Sign Up",
+    "signIn": "Sign In",
+    "hosting": "We are hosting a popular AI chat tool \"ChatGPT-Next-Web\" with customizations.",
+    "sloganBefore": "Unleash your potential with AI tool",
+    "sloganAfter": " ",
+    "helloWorld": "Hello world!",
+    "helloWorldWelcome": "Hello {name}!",
+    "ClientCounter": {
+        "getStarted": "Get Started",
+        "pricing": "Pricing",
+        "billing": "Billing",
+        "settings": "Settings",
+        "save": "Save",
+        "saving": "Saving",
+        "name": "Your Name",
+        "name1": "Name",
+        "usage": "Usage",
+        "yearly": "yearly",
+        "monthly": "monthly",
+        "signOut": "Sign Out",
+        "menu": "Menu",
+        "dashboard": "Dashboard",
+        "usageDesc": "Monitoring your credit usage",
+        "nameDesc": "Please enter your full name or a display name you are comfortable with.",
+        "settingsDesc": "Manage account and website settings.",
+        "subscription": "Subscription Plan",
+        "planBefore": "You are currently on the",
+        "planAfter": "plan",
+        "planRenew": "Your plan renews on ",
+        "managePlan": "Manage Subscription",
+        "upgradePlan": "Upgrade now",
+        "planCancel": "Your plan will be canceled on ",
+        "billingDesc": "Manage billing and your subscription plan.",
+        "exploreBeta": "Explore new features in Beta",
+        "pricingSlogan": "Choose what best meets your requirements!",
+        "pricingReference": "For AI model pricing, please reference",
+        "goDashboard": "Go to dashboard",
+        "continueWith": "Or continue with",
+        "monthlyBill": "Monthly Billing",
+        "annualBill": "Annual Billing",
+        "month": "mo",
+        "back": "Back",
+        "goPricing": "Go Pricing",
+        "chargeAnnual": "will be charged when annual",
+        "chargeMonthly": "when charged monthly",
+        "createAccount": "Create an account",
+        "enterEmailSignup": "Enter your email below to create your account",
+        "emailSignup": "Sign Up with Email",
+        "emailSignin": "Sign In with Email",
+        "welcomeBack": "Welcome back",
+        "enterEEmail": "Enter your email to sign in to your account",
+        "toSignup": "Don't have an account? Sign Up",
+        "signIn": "Sign In",
+        "hosting": "We are hosting a popular AI chat tool \"ChatGPT-Next-Web\" with customizations.",
+        "sloganBefore": "Unleash your potential with AI tool",
+        "sloganAfter": " ",
+        "helloWorld": "Hello world!",
+        "helloWorldWelcome": "Hello {name}!"
+    },
+    "IndexPage": {
+        "title": "next-intl example",
+        "description": "This is a basic example that demonstrates the usage of <code>next-intl</code> with the Next.js App Router. Try changing the locale in the top right corner and see how the content changes."
+    },
+    "PathnamesPage": {
+        "title": "Pathnames",
+        "description": "<p>The pathnames are internationalized too.</p><p>If you're using the default language English, you'll see <code>/en/pathnames</code> in the browser address bar on this page.</p><p>If you change the locale to German, the URL is localized accordingly (<code>/de/pfadnamen</code>).</p>"
+    },
+    "Error": {
+        "title": "Something went wrong!",
+        "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>"
+    },
+    "NotFoundPage": {
+        "title": "Page not found",
+        "description": "Please double-check the browser address bar or use the navigation to go to a known page."
+    },
+    "LocaleLayout": {
+        "title": "next-intl example"
+    },
+    "LocaleSwitcher": {
+        "label": "Change language",
+        "locale": "{locale, select, zh {🇩🇪 Chinese} en {🇺🇸 English} other {Unknown}}"
+    },
+    "Navigation": {
+        "home": "Home",
+        "pathnames": "Pathnames"
+    },
+    "PageLayout": {
+        "links": {
+            "docs": {
+                "title": "Docs",
+                "description": "Learn more about next-intl in the official docs.",
+                "href": "https://next-intl-docs.vercel.app/"
+            },
+            "source": {
+                "title": "Source code",
+                "description": "Browse the source code of this example on GitHub.",
+                "href": "https://github.com/amannn/next-intl/tree/main/examples/example-app-router"
+            }
+        }
     }
 }

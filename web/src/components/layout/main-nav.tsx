@@ -69,7 +69,7 @@ export function MainNav({ items, children }: MainNavProps) {
               "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
               "text-foreground",
 
-            )} href="/dashboard" >{t('dashboard')}</Link>
+            )} href="/dashboard" >{t("dashboard")}</Link>
           </SignedIn>
         </nav>
       ) : null}
