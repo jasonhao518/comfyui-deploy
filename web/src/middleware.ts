@@ -12,7 +12,7 @@ export default authMiddleware({
     return I18nMiddleware(req);
   },
   // debug: true,
-  publicRoutes: ["/", "/api/(.*)", "/docs(.*)", "/share(.*)"],
+  publicRoutes: ["/","/:locale/", "/api/(.*)", "/:locale/","/docs(.*)","/:locale/docs(.*)", "/share(.*)","/:locale/share(.*)"],
   // publicRoutes: ["/", "/(.*)"],
   async afterAuth(auth, req, evt) {
     // redirect them to organization selection page
