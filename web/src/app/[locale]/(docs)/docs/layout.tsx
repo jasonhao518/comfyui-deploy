@@ -1,5 +1,4 @@
 import { Providers } from "./providers";
-import "@/app/(app)/globals.css";
 import { Layout } from "@/components/docs/Layout";
 import { type Section } from "@/components/docs/SectionProvider";
 import glob from "fast-glob";
