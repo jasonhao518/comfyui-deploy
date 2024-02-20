@@ -64,13 +64,6 @@ export function MainNav({ items, children }: MainNavProps) {
               {item.title}
             </Link>
           ))}
-          <SignedIn>
-            <Link className={cn(
-              "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
-              "text-foreground",
-
-            )} href="/dashboard" >{t("dashboard")}</Link>
-          </SignedIn>
         </nav>
       ) : null}
       <button

@@ -48,9 +48,7 @@ export function NavBar({ locale, items, children, rightElements, scroll = false 
           {rightElements}
           <LocaleSwitcher />
           <SignedIn>
-            {/* Mount the UserButton component */}
-            <UserButton />
-
+            <Button href="/dashboard" >{t("dashboard")}</Button>
           </SignedIn>
           <SignedOut>
             {/* Signed out users get sign in button */}

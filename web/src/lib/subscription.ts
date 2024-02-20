@@ -4,13 +4,15 @@ import { pricingDataEn, pricingDataZh } from "@/config/subscriptions";
 import { stripe } from "@/lib/stripe";
 import { UserSubscriptionPlan } from "types";
 import { db } from "@/db/db";
+import { eq } from "drizzle-orm";
+import { usersTable } from "@/db/schema";
 
 export async function getUserSubscriptionPlan(
   userId: string,
   locale: string
 ): Promise<UserSubscriptionPlan> {
   const pricingData = locale === "zh" ? pricingDataZh : pricingDataEn
-  const user = await db.query.usersTable.findFirst({
+  let user = await db.query.usersTable.findFirst({
     where: eq(usersTable.id, userId),
   });
 

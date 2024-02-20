@@ -67,35 +67,28 @@ export const metadata = {
 
 export default async function RootLayout({ children, params }: RootLayoutProps) {
   const user = await auth()
-  const messages = await getMessages();
 
   return (
     <ClerkProvider>
-      <NextIntlClientProvider
-        locale={params.locale} messages={
-          // … and provide the relevant messages
-          messages
-        }
-      >
-        <html lang="en" suppressHydrationWarning>
-          <body
-            className={cn(
-              "min-h-screen bg-background font-sans antialiased",
-              fontSans.variable,
-              fontUrban.variable,
-              fontHeading.variable
-            )}
-          >
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              {children}
-              <Toaster />
-              <TailwindIndicator />
-            </ThemeProvider>
-            <Script id="my-script">{`window.$crisp=[];window.CRISP_WEBSITE_ID="48739dc7-7b9f-43ff-b6eb-cd9bc672ce88";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script>
 
-          </body>
-        </html>
-      </NextIntlClientProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable,
+            fontUrban.variable,
+            fontHeading.variable
+          )}
+        >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            {children}
+            <Toaster />
+            <TailwindIndicator />
+          </ThemeProvider>
+          <Script id="my-script">{`window.$crisp=[];window.CRISP_WEBSITE_ID="48739dc7-7b9f-43ff-b6eb-cd9bc672ce88";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script>
+
+        </body>
+      </html>
     </ClerkProvider>
   )
 }

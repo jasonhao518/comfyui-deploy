@@ -1,69 +1,48 @@
-import { Navbar } from "../../../components/Navbar";
-import { PHProvider } from "./providers";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { ClerkProvider } from "@clerk/nextjs";
-import type { Metadata } from "next";
-import meta from "next-gen/config";
-import PlausibleProvider from "next-plausible";
-import dynamic from "next/dynamic";
-import { Inter } from "next/font/google";
-import { Toaster } from "sonner";
+import { notFound } from "next/navigation"
 
-const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
-  ssr: false,
-});
+import { DashboardNav } from "@/components/layout/nav"
+import { NavBar } from "@/components/layout/navbar"
+import { SiteFooter } from "@/components/layout/site-footer"
+import { dashboardConfigEn, dashboardConfigZh } from "@/config/dashboard"
+import { auth } from "@clerk/nextjs"
+import { NextIntlClientProvider } from "next-intl"
+import { getMessages } from "next-intl/server"
 
-const inter = Inter({ subsets: ["latin"] });
+interface DashboardLayoutProps {
+  children?: React.ReactNode,
+  params: { locale: string };
+}
 
-export const metadata: Metadata = {
-  title: meta["og:title"],
-  metadataBase: new URL("http://locxalhost:3000"),
-  description: meta["og:description"],
+export default async function DashboardLayout({
+  children, params
+}: DashboardLayoutProps) {
+  const user = await auth()
+  if (!user) {
+    return notFound()
+  }
+  const messages = await getMessages();
 
-  category: "technology",
-
-  openGraph: {
-    type: "website",
-    title: meta["og:title"],
-    description: meta["og:description"],
-    locale: "en_US",
-    images: "/og.jpg",
-  },
-};
-
-export default function RootLayout({
-  children,
-  modal,
-}: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
-}) {
   return (
-    <html lang="en">
-      <ClerkProvider>
-        <TooltipProvider>
-          {process.env.PLAUSIBLE_DOMAIN && (
-            <head>
-              <PlausibleProvider domain={process.env.PLAUSIBLE_DOMAIN} />
-            </head>
-          )}
-          <body className={inter.className}>
-            <main className="w-full flex min-h-[100dvh] flex-col items-center justify-start">
-              <div className="z-[-1] fixed h-full w-full bg-white">
-                <div className="absolute h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-              </div>
-              <div className="sticky w-full h-18 flex items-center justify-between gap-4 p-4 border-b border-gray-200">
-                <Navbar />
-              </div>
-              <div className="md:px-10 px-6 w-full h-[calc(100dvh-73px)]">
-                {children}
-              </div>
-              <Toaster richColors />
-              {modal}
-            </main>
-          </body>
-        </TooltipProvider>
-      </ClerkProvider>
-    </html>
-  );
+    <NextIntlClientProvider
+      locale={params.locale} messages={
+        // … and provide the relevant messages
+        messages
+      }
+    >
+      <div className="flex min-h-screen flex-col space-y-6">
+
+        <NavBar locale={params.locale} items={params.locale === "zh" ? dashboardConfigZh.mainNav : dashboardConfigEn.mainNav} scroll={false} />
+
+        <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
+          <aside className="hidden w-[200px] flex-col md:flex">
+            <DashboardNav items={params.locale === "zh" ? dashboardConfigZh.sidebarNav : dashboardConfigEn.sidebarNav} />
+          </aside>
+          <main className="flex w-full flex-1 flex-col overflow-hidden">
+            {children}
+          </main>
+        </div>
+        <SiteFooter className="border-t" />
+      </div>
+    </NextIntlClientProvider>
+  )
 }
