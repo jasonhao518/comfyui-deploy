@@ -9,10 +9,13 @@ const I18nMiddleware = createMiddleware({
 export default authMiddleware({
   beforeAuth: (req) => {
     // Execute next-intl middleware before Clerk's auth middleware
+    const url = new URL(req.url);
+    const pathname = url.pathname;
+    if (pathname.startsWith("/api/")) return null;
     return I18nMiddleware(req);
   },
   // debug: true,
-  publicRoutes: ["/","/:locale/", "/api/(.*)", "/:locale/","/docs(.*)","/:locale/docs(.*)", "/share(.*)","/:locale/share(.*)"],
+  publicRoutes: ["/", "/:locale/", "/api/(.*)", "/:locale/api/(.*)", "/docs(.*)", "/:locale/docs(.*)", "/share(.*)", "/:locale/share(.*)"],
   // publicRoutes: ["/", "/(.*)"],
   async afterAuth(auth, req, evt) {
     // redirect them to organization selection page
