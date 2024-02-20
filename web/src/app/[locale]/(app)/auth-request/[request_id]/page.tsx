@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { createAuthRequest } from "@/server/curdApiKeys";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-import { getOrgOrUserDisplayName } from "../../../../server/getOrgOrUserDisplayName";
+import { getOrgOrUserDisplayName } from "../../../../../server/getOrgOrUserDisplayName";
 import { db } from "@/db/db";
 import { eq } from "drizzle-orm";
 import { authRequestsTable } from "@/db/schema";

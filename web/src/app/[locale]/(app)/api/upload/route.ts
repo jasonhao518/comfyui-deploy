@@ -5,8 +5,8 @@ import { z } from "zod";
 import {
   createNewWorkflow,
   createNewWorkflowVersion,
-} from "../../../../server/createNewWorkflow";
-import { parseJWT } from "../../../../server/parseJWT";
+} from "../../../../../server/createNewWorkflow";
+import { parseJWT } from "../../../../../server/parseJWT";
 
 // This is will be deprecated
 

@@ -16,6 +16,7 @@
     "lint:fix": "bunx @biomejs/biome lint --apply ./src"
   },
   "dependencies": {
+    "next-intl": "latest",
     "@algolia/autocomplete-core": "^1.13.0",
     "@aws-sdk/client-s3": "^3.472.0",
     "@aws-sdk/s3-request-presigner": "^3.472.0",

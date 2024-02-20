@@ -1,4 +1,4 @@
-import { MachineBuildLog } from "../../../../components/MachineBuildLog";
+import { MachineBuildLog } from "../../../../../components/MachineBuildLog";
 import { LogsViewer } from "@/components/LogsViewer";
 import {
   Card,

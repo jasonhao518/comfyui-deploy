@@ -5,7 +5,7 @@ import { isKeyRevoked } from "@/server/curdApiKeys";
 import { parseJWT } from "@/server/parseJWT";
 import type { Context, Next } from "hono";
 import { handle } from "hono/vercel";
-import { app } from "../../../../routes/app";
+import { app } from "../../../../../routes/app";
 import { registerWorkflowUploadRoute } from "@/routes/registerWorkflowUploadRoute";
 import { registerGetAuthResponse } from "@/routes/registerGetAuthResponse";
 import { registerGetWorkflowRoute } from "@/routes/registerGetWorkflow";

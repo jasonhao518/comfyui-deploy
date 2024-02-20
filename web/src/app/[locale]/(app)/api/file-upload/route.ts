@@ -1,7 +1,7 @@
 import { handleResourceUpload } from "@/server/resource";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { parseDataSafe } from "../../../../lib/parseDataSafe";
+import { parseDataSafe } from "../../../../../lib/parseDataSafe";
 
 const Request = z.object({
   file_name: z.string(),

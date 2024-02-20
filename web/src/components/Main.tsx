@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import meta from "next-gen/config";
+import { getTranslations } from 'next-intl/server';
 
 function isDevelopment() {
   return process.env.NODE_ENV === "development";
@@ -43,7 +44,7 @@ function FeatureCard(props: {
 
 export default async function Main() {
   const { userId } = await auth();
-
+  const t = await getTranslations('LocaleSwitcher');
   if (userId) {
     const user = await db.query.usersTable.findFirst({
       where: eq(usersTable.id, userId),
@@ -65,7 +66,7 @@ export default async function Main() {
               className="text-sm"
               href="https://github.com/BennyKok/comfyui-deploy"
             >
-              ✨ Open Source on Github
+              ✨ Open Source on Github {t('label')}
             </Section.Announcement>
 
             <Section.Title className="text-left">
