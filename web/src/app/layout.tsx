@@ -10,8 +10,6 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import Script from "next/script";
 import { ClerkProvider, auth } from '@clerk/nextjs'
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
 
 interface RootLayoutProps {
   children: React.ReactNode,
