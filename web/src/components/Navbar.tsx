@@ -1,5 +1,5 @@
 "use client";
-
+import { dark } from '@clerk/themes';
 import { NavbarMenu } from "@/components/NavbarMenu";
 import { Button } from "@/components/ui/button";
 import {
@@ -80,6 +80,7 @@ export function Navbar() {
         {isDesktop && (
           <OrganizationSwitcher
             appearance={{
+              baseTheme: dark,
               elements: {
                 rootBox: "flex items-center justify-center",
               },
