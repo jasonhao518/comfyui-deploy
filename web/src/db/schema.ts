@@ -348,6 +348,20 @@ export const authRequestsTable = dbSchema.table("auth_requests", {
   updated_at: timestamp("updated_at").defaultNow().notNull(),
 });
 
+export const quotaTable = dbSchema.table("quota", {
+  id: text("id").primaryKey().notNull(),
+  credit: integer("credit").default(0).notNull(),
+  rate: integer("rate").default(0).notNull(),
+  plan: text("plan").default("free").notNull(),
+  gemini: boolean("gemini").default(false).notNull(),
+  dalle: boolean("dalle").default(false).notNull(),
+  beta: boolean("beta").default(false).notNull(),
+  gpt4: boolean("gpt4").default(false).notNull(),
+  stripe_current_period_end: timestamp("stripe_current_period_end").defaultNow(),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+});
+
 export type UserType = InferSelectModel<typeof usersTable>;
 export type WorkflowType = InferSelectModel<typeof workflowTable>;
 export type MachineType = InferSelectModel<typeof machinesTable>;
