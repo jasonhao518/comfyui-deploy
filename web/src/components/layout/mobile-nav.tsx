@@ -6,15 +6,42 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { useLockBody } from "@/hooks/use-lock-body"
 import { Icons } from "@/components/shared/icons"
+import { Github, Menu } from "lucide-react";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
+import { OrganizationList, useOrganization } from "@clerk/nextjs"
+import { NavbarMenu } from "@/components/NavbarMenu"
+import { Button } from "@/components/ui/button"
 
 interface MobileNavProps {
   items: MainNavItem[]
   children?: React.ReactNode
+  dashboard?: boolean
 }
 
-export function MobileNav({ items, children }: MobileNavProps) {
+export function MobileNav({ items, children, dashboard = false }: MobileNavProps) {
   useLockBody()
-
+  const { organization } = useOrganization();
+  const _isDesktop = useMediaQuery("(min-width: 1024px)");
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [isSheetOpen, setSheetOpen] = useState(true);
+  useEffect(() => {
+    setIsDesktop(_isDesktop);
+  }, [_isDesktop]);
   return (
     <div
       className={cn(
@@ -40,6 +67,38 @@ export function MobileNav({ items, children }: MobileNavProps) {
             </Link>
           ))}
         </nav>
+        <Sheet open={isSheetOpen} onOpenChange={(open) => setSheetOpen(open)}>
+
+          <SheetContent side="left" className="flex flex-col gap-4">
+            <SheetHeader>
+              <SheetTitle className="text-start">Comfy Deploy</SheetTitle>
+            </SheetHeader>
+            <div className="grid h-full grid-rows-[1fr_auto]">
+              <NavbarMenu
+                className=" h-full"
+                closeSheet={() => setSheetOpen(false)}
+              />
+              {/* <OrganizationSwitcher
+                  appearance={{
+                    elements: {
+                      rootBox: "flex items-center justify-center  z-[50]",
+                    },
+                  }}
+                /> */}
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline">
+                    Organization
+                    {organization?.name && ` (${organization?.name})`}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 border-0 bg-none shadow-none">
+                  <OrganizationList />
+                </PopoverContent>
+              </Popover>
+            </div>
+          </SheetContent>
+        </Sheet>
         {children}
       </div>
     </div>

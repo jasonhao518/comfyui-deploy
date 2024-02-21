@@ -9,14 +9,40 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/shared/icons"
 import { MobileNav } from "@/components/layout/mobile-nav"
-import { OrganizationSwitcher, SignedIn } from "@clerk/nextjs"
+import { SignedIn } from "@clerk/nextjs"
 import { useTranslations } from "next-intl"
+import { NavbarMenu } from "@/components/NavbarMenu";
+import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  OrganizationList,
+  OrganizationSwitcher,
+  UserButton,
+  useOrganization,
+} from "@clerk/nextjs";
+import { Github, Menu } from "lucide-react";
+import meta from "next-gen/config";
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 interface MainNavProps {
   items?: MainNavItem[]
   children?: React.ReactNode
   dashboard?: boolean
 }
+
+
 
 export function MainNav({ items, children, dashboard = false }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
@@ -25,7 +51,13 @@ export function MainNav({ items, children, dashboard = false }: MainNavProps) {
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu)
   }
-
+  const { organization } = useOrganization();
+  const _isDesktop = useMediaQuery("(min-width: 1024px)");
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [isSheetOpen, setSheetOpen] = useState(false);
+  useEffect(() => {
+    setIsDesktop(_isDesktop);
+  }, [_isDesktop]);
   React.useEffect(() => {
     const closeMobileMenuOnClickOutside = (event: MouseEvent) => {
       if (showMobileMenu) {
@@ -71,15 +103,43 @@ export function MainNav({ items, children, dashboard = false }: MainNavProps) {
           ))}
         </nav>
       ) : null}
-      <button
-        className="flex items-center space-x-2 md:hidden"
-        onClick={toggleMobileMenu}
-      >
-        {showMobileMenu ? <Icons.close /> : <Icons.logo />}
-        <span className="font-bold">{t("menu")}</span>
-      </button>
-      {showMobileMenu && items && (
-        <MobileNav items={items}>{children}</MobileNav>
+      {!isDesktop && (
+        <Sheet open={isSheetOpen} onOpenChange={(open) => setSheetOpen(open)}>
+          <SheetTrigger asChild>
+            <button className="flex items-center justify-center w-8 h-8 p-2">
+              <Menu />
+            </button>
+          </SheetTrigger>
+          <SheetContent side="left" className="flex flex-col gap-4">
+            <SheetHeader>
+              <SheetTitle className="text-start">Comfy Deploy</SheetTitle>
+            </SheetHeader>
+            <div className="grid h-full grid-rows-[1fr_auto]">
+              <NavbarMenu
+                className=" h-full"
+                closeSheet={() => setSheetOpen(false)}
+              />
+              {/* <OrganizationSwitcher
+                  appearance={{
+                    elements: {
+                      rootBox: "flex items-center justify-center  z-[50]",
+                    },
+                  }}
+                /> */}
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline">
+                    Organization
+                    {organization?.name && ` (${organization?.name})`}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 border-0 bg-none shadow-none">
+                  <OrganizationList />
+                </PopoverContent>
+              </Popover>
+            </div>
+          </SheetContent>
+        </Sheet>
       )}
     </div>
   )
