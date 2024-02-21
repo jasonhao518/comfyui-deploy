@@ -1,5 +1,5 @@
 import { db } from "@/db/db";
-import { usersTable } from "@/db/schema";
+import { quotaTable, usersTable } from "@/db/schema";
 import { clerkClient } from "@clerk/nextjs";
 
 export async function setInitialUserData(userId: string) {
@@ -42,6 +42,24 @@ export async function setInitialUserData(userId: string) {
       // this is for display name, maybe different from username
       name: nameFallback,
     });
+    const oneMonthLater = new Date();
+
+    // Add one month to the new date object
+    oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+    // create quota
+    await db.insert(quotaTable)
+      .values({
+        id: userId,
+        plan: "free",
+        credit: 1000,
+        rate: 100,
+        gpt4: false,
+        dalle: false,
+        gemini: true,
+        beta: false,
+        stripe_current_period_end: oneMonthLater
+      })
+      .onConflictDoNothing();
     return result;
   }
 }
