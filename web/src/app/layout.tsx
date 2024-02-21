@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/styles/globals.css";
 
 import { fontHeading, fontSans, fontUrban } from "@/assets/fonts";
 import { Analytics } from "@/components/analytics";
@@ -9,13 +9,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import Script from "next/script";
-import { ClerkProvider, auth } from '@clerk/nextjs'
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { ClerkProvider } from '@clerk/nextjs'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 interface RootLayoutProps {
-  children: React.ReactNode,
-  params: { locale: string };
+  children: React.ReactNode
 }
 
 export const metadata = {
@@ -65,12 +63,10 @@ export const metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default async function RootLayout({ children, params }: RootLayoutProps) {
-  const user = await auth()
+export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <ClerkProvider>
-
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
@@ -80,9 +76,12 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
             fontHeading.variable
           )}
         >
+          <GoogleAnalytics gaId="AW-628046278" />
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             {children}
+            <Analytics />
             <Toaster />
+            <ModalProvider />
             <TailwindIndicator />
           </ThemeProvider>
           <Script id="my-script">{`window.$crisp=[];window.CRISP_WEBSITE_ID="48739dc7-7b9f-43ff-b6eb-cd9bc672ce88";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script>

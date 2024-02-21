@@ -7,6 +7,10 @@ export const marketingConfigEn: MarketingConfig = {
       href: "https://app.chatlog.ai",
     },
     {
+      title: "Examples",
+      href: "/examples",
+    },
+    {
       title: "Pricing",
       href: "/pricing",
     },
@@ -22,6 +26,10 @@ export const marketingConfigFr: MarketingConfig = {
     {
       title: "App",
       href: "https://app.chatlog.ai",
+    },
+    {
+      title: "示例",
+      href: "/examples",
     },
     {
       title: "价格",

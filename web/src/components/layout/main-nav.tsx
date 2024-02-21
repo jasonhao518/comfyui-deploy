@@ -9,15 +9,16 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/shared/icons"
 import { MobileNav } from "@/components/layout/mobile-nav"
-import { SignedIn } from "@clerk/nextjs"
+import { OrganizationSwitcher, SignedIn } from "@clerk/nextjs"
 import { useTranslations } from "next-intl"
 
 interface MainNavProps {
   items?: MainNavItem[]
   children?: React.ReactNode
+  dashboard?: boolean
 }
 
-export function MainNav({ items, children }: MainNavProps) {
+export function MainNav({ items, children, dashboard = false }: MainNavProps) {
   const segment = useSelectedLayoutSegment()
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
   const t = useTranslations()
@@ -47,6 +48,10 @@ export function MainNav({ items, children }: MainNavProps) {
           {siteConfig.name}
         </span>
       </Link>
+      <SignedIn>
+        {dashboard && <div className="hidden gap-6 md:flex"><OrganizationSwitcher /></div>}
+
+      </SignedIn>
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
           {items?.map((item, index) => (

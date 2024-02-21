@@ -6,7 +6,6 @@ import { auth } from "@clerk/nextjs"
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { getMessages } from "next-intl/server";
 
-import Script from "next/script"
 import { Suspense } from "react"
 
 interface MarketingLayoutProps {

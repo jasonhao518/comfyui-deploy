@@ -31,8 +31,8 @@ export default async function DashboardPage() {
 
   return (
     <DashboardShell>
-      <DashboardHeader heading={t("usage")} text={t("usage.desc")}>
-        {quota?.beta && <Link href="https://beta.chatlog.ai?_vercel_share=HMbej3IvCuJmqFXXnoMe1egTRXoDLciJ" >{t("explore.beta")}</Link>
+      <DashboardHeader heading={t("usage")} text={t("usageDesc")}>
+        {quota?.beta && <Link href="https://beta.chatlog.ai?_vercel_share=HMbej3IvCuJmqFXXnoMe1egTRXoDLciJ" >{t("exploreBeta")}</Link>
         }
       </DashboardHeader>
       <div>

@@ -29,8 +29,8 @@ export function BillingInfo({
       <CardHeader>
         <CardTitle>{t("subscription")}</CardTitle>
         <CardDescription>
-          {t("plan.before")} <strong>{subscriptionPlan.title}</strong>{" "}
-          {t("plan.after")}.
+          {t("planBefore")} <strong>{subscriptionPlan.title}</strong>{" "}
+          {t("planAfter")}.
         </CardDescription>
       </CardHeader>
       <CardContent>{subscriptionPlan.description}</CardContent>
@@ -39,14 +39,14 @@ export function BillingInfo({
           href="/pricing"
           className={cn(buttonVariants())}
         >
-          {subscriptionPlan.isPaid ? t("manage.plan") : t("upgrade.plan")}
+          {subscriptionPlan.isPaid ? t("managePlan") : t("upgradePlan")}
         </Link>
 
         {subscriptionPlan.isPaid ? (
           <p className="rounded-full text-xs font-medium">
             {subscriptionPlan.isCanceled
-              ? t("plan.cancel")
-              : t("plan.renew")}
+              ? t("planCancel")
+              : t("planRenew")}
             {formatDate(subscriptionPlan.stripeCurrentPeriodEnd)}.
           </p>
         ) : null}

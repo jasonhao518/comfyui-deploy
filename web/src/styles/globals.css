@@ -19,7 +19,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 
 @layer base {
   :root {
@@ -78,15 +78,18 @@
 
 .shiki {
   /* @apply rounded-lg p-2 overflow-x-scroll */
-  @apply  p-2 max-w-full overflow-auto w-full
+  @apply p-2 max-w-full overflow-auto w-full
 }
-.vsc-controller{
+
+.vsc-controller {
   position: absolute;
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

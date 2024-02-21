@@ -16,10 +16,8 @@ export default async function IndexPage() {
     <>
       <section className="space-y-6 pb-12 pt-16 lg:py-28">
         <div className="container flex max-w-[64rem] flex-col items-center gap-5 text-center">
-
-
           <h1
-            className="animate-fade-up text-balance font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl"
+            className="animate-fade-up text-balance font-urban text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
           >
             {t("sloganBefore")}{" "}
@@ -30,7 +28,7 @@ export default async function IndexPage() {
           </h1>
 
           <p
-            className="max-w-[42rem] animate-fade-up text-balance leading-normal text-muted-foreground opacity-0 sm:text-xl sm:leading-8"
+            className="max-w-[42rem] animate-fade-up text-balance leading-normal text-muted-foreground sm:text-xl sm:leading-8"
             style={{ animationDelay: "0.35s", animationFillMode: "forwards" }}
           >
             {t("hosting")}
@@ -38,7 +36,7 @@ export default async function IndexPage() {
           </p>
 
           <div
-            className="flex animate-fade-up justify-center space-x-2 opacity-0 md:space-x-4"
+            className="flex animate-fade-up justify-center space-x-2 md:space-x-4"
             style={{ animationDelay: "0.4s", animationFillMode: "forwards" }}
           >
             <Link href="/pricing" className={cn(buttonVariants({ size: "lg" }))}>
@@ -68,7 +66,7 @@ export default async function IndexPage() {
         </div>
       </section>
       <section
-        className="animate-fade-up py-16 text-zinc-500 opacity-0 dark:text-zinc-400"
+        className="animate-fade-up py-16 text-zinc-500 dark:text-zinc-400"
         style={{ animationDelay: "0.55s", animationFillMode: "forwards" }}
       >
         <div className="container mx-auto">

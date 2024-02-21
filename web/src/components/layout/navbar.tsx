@@ -8,6 +8,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useSigninModal } from "@/hooks/use-signin-modal";
 import { LoginButton } from "./login-button";
+import { useMediaQuery } from "usehooks-ts";
+
 import {
   OrganizationList,
   OrganizationSwitcher,
@@ -28,9 +30,10 @@ interface NavBarProps {
   rightElements?: React.ReactNode
   scroll?: boolean
   locale: string
+  dashboard?: boolean
 }
 
-export function NavBar({ locale, items, children, rightElements, scroll = false }: NavBarProps) {
+export function NavBar({ locale, items, children, rightElements, scroll = false, dashboard = false }: NavBarProps) {
   const scrolled = useScroll(50);
   const signInModal = useSigninModal();
   const t = useTranslations()
@@ -43,13 +46,14 @@ export function NavBar({ locale, items, children, rightElements, scroll = false 
         : "border-b"}`}
     >
       <div className="container flex h-16 items-center justify-between py-4">
-        <MainNav items={items}>{children}</MainNav>
+        <MainNav dashboard={dashboard} items={items}>{children}</MainNav>
 
         <div className="flex items-center space-x-3">
           {rightElements}
           <LocaleSwitcher />
           <SignedIn>
-            <Button onClick={() => router.push("/dashboard")} >{t("dashboard")}</Button>
+            {dashboard && <UserButton />}
+            {!dashboard && <Button onClick={() => router.push("/dashboard")} >{t("dashboard")}</Button>}
           </SignedIn>
           <SignedOut>
             {/* Signed out users get sign in button */}

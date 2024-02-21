@@ -32,19 +32,19 @@ export function PricingCards({ userId, locale, subscriptionPlan }: PricingCardsP
       <div className="mx-auto mb-10 flex w-full flex-col gap-5">
         <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">{t("pricing")}</p>
         <h2 className="font-heading text-xl leading-[1.1] md:text-3xl">
-          {t("pricing.slogan")}
+          {t("pricingSlogan")}
         </h2>
       </div>
 
       <div className="mb-4 flex items-center gap-5">
-        <span>{t("monthly.bill")}</span>
+        <span>{t("monthlyBill")}</span>
         <Switch
           checked={isYearly}
           onCheckedChange={toggleBilling}
           role="switch"
           aria-label="switch-year"
         />
-        <span><span>{t("annual.bill")}</span></span>
+        <span><span>{t("annualBill")}</span></span>
       </div>
 
       <div className="mx-auto grid max-w-screen-lg gap-5 bg-inherit py-5 md:grid-cols-3 lg:grid-cols-3">
@@ -118,7 +118,7 @@ export function PricingCards({ userId, locale, subscriptionPlan }: PricingCardsP
       </div>
 
       <p className="mt-3 text-balance text-center text-base text-muted-foreground">
-        <strong>{t("pricing.reference")} <a target="_blank" href="https://openai.com/pricing">OpenAI Pricing</a></strong>
+        <strong>{t("pricingReference")} <a target="_blank" href="https://openai.com/pricing">OpenAI Pricing</a></strong>
       </p>
     </section>
   )

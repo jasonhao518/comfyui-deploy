@@ -19,6 +19,21 @@ export const dashboardConfigEn: DashboardConfig = {
       icon: "post",
     },
     {
+      title: "Workflows",
+      href: "/dashboard/workflows",
+      icon: "billing",
+    },
+    {
+      title: "Machines",
+      href: "/dashboard/machines",
+      icon: "billing",
+    },
+    {
+      title: "API Keys",
+      href: "/dashboard/api-keys",
+      icon: "billing",
+    },
+    {
       title: "Billing",
       href: "/dashboard/billing",
       icon: "billing",
@@ -39,6 +54,10 @@ export const dashboardConfigZh: DashboardConfig = {
       href: "https://app.chatlog.ai",
     },
     {
+      title: "Examples",
+      href: "/examples",
+    },
+    {
       title: "Support",
       href: "/support",
       disabled: true,
@@ -49,6 +68,21 @@ export const dashboardConfigZh: DashboardConfig = {
       title: "使用量",
       href: "/dashboard",
       icon: "post",
+    },
+    {
+      title: "工作流",
+      href: "/dashboard/workflows",
+      icon: "billing",
+    },
+    {
+      title: "机器",
+      href: "/dashboard/machines",
+      icon: "billing",
+    },
+    {
+      title: "API密钥",
+      href: "/dashboard/api-keys",
+      icon: "billing",
     },
     {
       title: "账单",

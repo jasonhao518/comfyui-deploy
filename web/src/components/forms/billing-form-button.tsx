@@ -38,8 +38,8 @@ export function BillingFormButton({ year, offer, subscriptionPlan, locale }: Bil
       ) : (
         <>
           {subscriptionPlan.stripePriceId === offer.stripeIds[year ? "yearly" : "monthly"]
-            ? t("manage.plan")
-            : t("upgrade.plan")}
+            ? t("managePlan")
+            : t("upgradePlan")}
         </>
       )}
     </Button>
