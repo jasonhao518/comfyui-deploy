@@ -70,21 +70,6 @@ export const dashboardConfigZh: DashboardConfig = {
       icon: "post",
     },
     {
-      title: "工作流",
-      href: "/dashboard/workflows",
-      icon: "billing",
-    },
-    {
-      title: "机器",
-      href: "/dashboard/machines",
-      icon: "billing",
-    },
-    {
-      title: "API密钥",
-      href: "/dashboard/api-keys",
-      icon: "billing",
-    },
-    {
       title: "账单",
       href: "/dashboard/billing",
       icon: "billing",

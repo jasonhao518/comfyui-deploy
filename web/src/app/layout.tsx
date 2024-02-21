@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { shadesOfPurple, dark } from "@clerk/themes";
+
 import { fontHeading, fontSans, fontUrban } from "@/assets/fonts";
 import { Analytics } from "@/components/analytics";
 import { ModalProvider } from "@/components/modal-provider";
@@ -12,7 +12,6 @@ import Script from "next/script";
 import { ClerkProvider } from '@clerk/nextjs'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useTheme } from "next-themes";
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -66,11 +65,9 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const { theme, setTheme } = useTheme();
+
   return (
-    <ClerkProvider appearance={{
-      baseTheme: theme == "dark" ? dark : shadesOfPurple,
-    }}>
+    <ClerkProvider >
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
