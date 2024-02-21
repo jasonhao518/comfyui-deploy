@@ -10,10 +10,11 @@ import { Switch } from '@/components/ui/switch';
 import { pricingDataEn, pricingDataZh } from "@/config/subscriptions";
 import { UserSubscriptionPlan } from "@/types";
 import { useTranslations } from "next-intl";
-import { redirectToSignIn } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
+
 
 interface PricingCardsProps {
-  userId?: string;
+  userId?: string | null;
   locale: string
   subscriptionPlan?: UserSubscriptionPlan;
 }
@@ -72,7 +73,7 @@ export function PricingCards({ userId, locale, subscriptionPlan }: PricingCardsP
               </div>
               {offer.prices.monthly > 0 ? (
                 <div className="text-left text-sm text-muted-foreground">
-                  {isYearly ? `$${offer.prices.yearly} ${t("charge.annual")}` : `${t("charge.monthly")}`}
+                  {isYearly ? `$${offer.prices.yearly} ${t("chargeAnnual")}` : `${t("charge.monthly")}`}
                 </div>
               ) : null}
             </div>
@@ -95,7 +96,7 @@ export function PricingCards({ userId, locale, subscriptionPlan }: PricingCardsP
               </ul>
 
               {userId && subscriptionPlan ? (
-                offer.title === 'Starter' ? (
+                offer.title === 'Free' ? (
                   <Link
                     href="/dashboard"
                     className={buttonVariants({
@@ -103,13 +104,13 @@ export function PricingCards({ userId, locale, subscriptionPlan }: PricingCardsP
                       variant: 'default',
                     })}
                   >
-                    {t("go.dashboard")}
+                    {t("goDashboard")}
                   </Link>
                 ) : (
                   <BillingFormButton locale={locale} year={isYearly} offer={offer} subscriptionPlan={subscriptionPlan} />
                 )
               ) : (
-                <Button onClick={() => redirectToSignIn({ returnBackUrl: "/pricing" })}>{t("signIn")}</Button>
+                <SignInButton />
               )}
 
             </div>

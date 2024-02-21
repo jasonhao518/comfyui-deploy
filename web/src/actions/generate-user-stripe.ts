@@ -14,19 +14,18 @@ export type responseAction = {
 // const billingUrl = absoluteUrl("/dashboard/billing")
 const billingUrl = absoluteUrl("/pricing")
 
-export async function generateUserStripe(priceId: string, locale: string): Promise<responseAction> {
+export async function generateUserStripe(priceId: string, locale: string) {
   let redirectUrl: string = "";
-  console.log("priceId: "+priceId)
+  console.log("priceId: " + priceId)
   try {
 
     const { userId, orgId } = await auth();
-
     if (!userId) {
       throw new Error("Unauthorized");
     }
-  
+    const userId1 = orgId ? orgId : userId
     const user = await clerkClient.users.getUser(userId);
-    const subscriptionPlan = await getUserSubscriptionPlan(userId, locale)
+    const subscriptionPlan = await getUserSubscriptionPlan(userId1, locale)
 
     if (subscriptionPlan.isPaid && subscriptionPlan.stripeCustomerId) {
       // User on Paid Plan - Create a portal session to manage subscription.
@@ -53,7 +52,7 @@ export async function generateUserStripe(priceId: string, locale: string): Promi
           },
         ],
         metadata: {
-          userId: userId,
+          userId: userId1,
         },
       })
 
@@ -66,4 +65,5 @@ export async function generateUserStripe(priceId: string, locale: string): Promi
 
   // no revalidatePath because redirect
   redirect(redirectUrl)
+
 }

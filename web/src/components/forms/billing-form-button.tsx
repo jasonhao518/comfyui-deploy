@@ -22,14 +22,14 @@ export function BillingFormButton({ year, offer, subscriptionPlan, locale }: Bil
     offer.stripeIds[year ? "yearly" : "monthly"]!
   );
 
-  //const stripeSessionAction = () => startTransition(async () => await generateUserStripeSession());
+  const stripeSessionAction = () => startTransition(async () => await generateUserStripeSession(offer.stripeIds[year ? "yearly" : "monthly"]!));
 
   return (
     <Button
       variant="default"
       className="w-full"
       disabled={isPending}
-    //onClick={stripeSessionAction}
+      onClick={stripeSessionAction}
     >
       {isPending ? (
         <>

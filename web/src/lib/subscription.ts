@@ -6,6 +6,7 @@ import { UserSubscriptionPlan } from "types";
 import { db } from "@/db/db";
 import { eq } from "drizzle-orm";
 import { usersTable } from "@/db/schema";
+import { setInitialUserData } from "@/lib/setInitialUserData";
 
 export async function getUserSubscriptionPlan(
   userId: string,

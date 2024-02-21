@@ -13,16 +13,17 @@ export const metadata = {
 export default async function PricingPage({ params }: {
   params: { locale: string; }
 }) {
-  const { userId } = await auth()
+  const { userId, orgId } = await auth()
+  const userId1 = orgId ? orgId : userId;
   let subscriptionPlan;
 
   if (userId) {
-    subscriptionPlan = await getUserSubscriptionPlan(userId!, params.locale)
+    subscriptionPlan = await getUserSubscriptionPlan(userId1!, params.locale)
   }
 
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <PricingCards locale={params.locale} userId={userId!} subscriptionPlan={subscriptionPlan} />
+      <PricingCards locale={params.locale} userId={userId1} subscriptionPlan={subscriptionPlan} />
 
       <hr className='container' />
     </div>

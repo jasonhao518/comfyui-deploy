@@ -18,14 +18,14 @@ export const metadata = {
 export default async function BillingPage({ params }: {
   params: { locale: string }
 }) {
-  const user = await auth()
+  const { userId, orgId } = await auth()
   const t = await getTranslations()
 
-  if (!user) {
+  if (!userId) {
     redirectToSignIn()
   }
 
-  const subscriptionPlan = await getUserSubscriptionPlan(user?.userId!, params.locale)
+  const subscriptionPlan = await getUserSubscriptionPlan(orgId ? orgId : userId!, params.locale)
 
   return (
     <DashboardShell>
