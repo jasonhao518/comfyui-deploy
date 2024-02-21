@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import Script from "next/script";
 import { ClerkProvider } from '@clerk/nextjs'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -78,7 +79,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <GoogleAnalytics gaId="AW-628046278" />
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            {children}
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
             <Analytics />
             <Toaster />
             <ModalProvider />
