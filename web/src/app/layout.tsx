@@ -9,11 +9,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import Script from "next/script";
+import { ClerkProvider } from '@clerk/nextjs'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { AppProps } from "next/app";
 
 interface RootLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode,
+  pageProps: AppProps
 }
 
 export const metadata = {
@@ -63,31 +66,33 @@ export const metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children, pageProps }: RootLayoutProps) {
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontUrban.variable,
-          fontHeading.variable
-        )}
-      >
-        <GoogleAnalytics gaId="AW-628046278" />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <TooltipProvider>
-            {children}
-          </TooltipProvider>
-          <Analytics />
-          <Toaster />
-          <ModalProvider />
-          <TailwindIndicator />
-        </ThemeProvider>
-        <Script id="my-script">{`window.$crisp=[];window.CRISP_WEBSITE_ID="48739dc7-7b9f-43ff-b6eb-cd9bc672ce88";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script>
+    <ClerkProvider  {...pageProps}>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+            fontSans.variable,
+            fontUrban.variable,
+            fontHeading.variable
+          )}
+        >
+          <GoogleAnalytics gaId="AW-628046278" />
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
+            <Analytics />
+            <Toaster />
+            <ModalProvider />
+            <TailwindIndicator />
+          </ThemeProvider>
+          <Script id="my-script">{`window.$crisp=[];window.CRISP_WEBSITE_ID="48739dc7-7b9f-43ff-b6eb-cd9bc672ce88";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}</Script>
 
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
