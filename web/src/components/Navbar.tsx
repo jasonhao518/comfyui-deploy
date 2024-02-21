@@ -1,5 +1,5 @@
 "use client";
-import { dark, shadesOfPurple } from '@clerk/themes';
+
 import { NavbarMenu } from "@/components/NavbarMenu";
 import { Button } from "@/components/ui/button";
 import {
@@ -24,10 +24,8 @@ import { Github, Menu } from "lucide-react";
 import meta from "next-gen/config";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
-import { useTheme } from 'next-themes';
 
 export function Navbar() {
-  const { theme, setTheme } = useTheme();
   const { organization } = useOrganization();
   const _isDesktop = useMediaQuery("(min-width: 1024px)");
   const [isDesktop, setIsDesktop] = useState(true);
@@ -82,7 +80,6 @@ export function Navbar() {
         {isDesktop && (
           <OrganizationSwitcher
             appearance={{
-              baseTheme: theme == "dark" ? dark : shadesOfPurple,
               elements: {
                 rootBox: "flex items-center justify-center",
               },
