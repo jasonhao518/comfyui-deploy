@@ -246,6 +246,20 @@
       "when": 1705902960991,
       "tag": "0034_even_lady_ursula",
       "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "5",
+      "when": 1708513623104,
+      "tag": "0035_early_silvermane",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "5",
+      "when": 1708514234137,
+      "tag": "0036_equal_ronan",
+      "breakpoints": true
     }
   ]
 }
