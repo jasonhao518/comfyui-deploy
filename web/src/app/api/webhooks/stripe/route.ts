@@ -37,10 +37,10 @@ export async function POST(req: Request) {
 
     await db.update(usersTable)
       .set({
-        stripe_subscription_id: subscription.id,
-        stripe_customer_id: subscription.customer as string,
-        stripe_price_id: subscription.items.data[0].price.id,
-        stripe_current_period_end: new Date(
+        stripeSubscriptionId: subscription.id,
+        stripeCustomerId: subscription.customer as string,
+        stripePriceId: subscription.items.data[0].price.id,
+        stripeCurrentPeriodEnd: new Date(
           subscription.current_period_end * 1000
         )
       })
@@ -116,12 +116,12 @@ export async function POST(req: Request) {
 
     const updatedUserId: { updatedId: string }[] = await db.update(usersTable)
       .set({
-        stripe_price_id: subscription.items.data[0].price.id,
-        stripe_current_period_end: new Date(
+        stripePriceId: subscription.items.data[0].price.id,
+        stripeCurrentPeriodEnd: new Date(
           subscription.current_period_end * 1000
         )
       })
-      .where(eq(usersTable.stripe_subscription_id, subscription.id))
+      .where(eq(usersTable.stripeSubscriptionId, subscription.id))
       .returning({ updatedId: usersTable.id });
 
     let credit = 0
